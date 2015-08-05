@@ -68,9 +68,9 @@ Authorization: Token token="auth_token"`
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-user_id | ID of user creating subscription
+Parameter | Datatype | Description | Required?
+--------- | ----------- | ----------- | -----------
+user_id | String | ID of user creating subscription | true
 
 ## Get Subscription
 
@@ -136,10 +136,10 @@ Authorization: Token token="auth_token"`
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-user_id | ID of user creating subscription
-id | ID for the selected subscription
+Parameter | Datatype | Description | Required?
+--------- | ----------- | ----------- | -----------
+user_id | String ID of user creating subscription | true
+id | String | ID for the selected subscription | true
 
 
 ## Create
@@ -206,16 +206,16 @@ Authorization: Token token="auth_token"`
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-user_id | ID of user creating subscription
-plan_id | ID of selected subscription level
-first_name | Optional: User first name
-last_name | Optional: User last name
-payment_token | Optional: Token from merchant service containing payment information, this is not required for iOS users
-coupon_code | Optional: ID of coupon
-subscription_source | Optional: Source of user, available choices are: iOS, Android, Web
-subscriber_account_id | Optional: Id to look up subscription details, this will be an ID provided by merchant
+Parameter | Datatype | Description | Required?
+--------- | ----------- | ----------- | -----------
+user_id | String | ID of user creating subscription | true
+plan_id | String | ID of selected subscription level | true
+first_name | String | User first name | true
+last_name | String | User last name | true
+payment_token | String | Token from merchant service containing payment information, this is not required for iOS users | false
+coupon_code | String | ID of coupon | false
+subscription_source | String | Source of user, available choices are: iOS, Android, Web. Web is default | false
+subscriber_account_id | String | Id to look up subscription details, this will be an ID provided by merchant | false
 
 ## Edit
 
