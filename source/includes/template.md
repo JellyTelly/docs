@@ -18,6 +18,7 @@
 
 Add Description here
 
+<aside class="notice">NOTE: this method requires the auth_token</aside>
 <aside class="notice">This is a blue note</aside>
 <aside class="warning">This is a red note</aside>
 <aside class="success">This is a green note</aside>
