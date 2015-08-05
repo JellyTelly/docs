@@ -11,6 +11,11 @@ toc_footers:
 
 includes:
   - users
+  - subscriptions
+  - series
+  - videos
+  - games
+  - search
   - errors
 
 search: true
@@ -22,6 +27,13 @@ Welcome to the Jellytelly API! You can use our API to access Jellytelly API endp
 
 We have language bindings in Shell, Ruby! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
 
+# Environments
+
+Environment | API Access Point
+--------- | -----------
+Development | https://apidev.jellytelly.com
+QA | https://apiqa.jellytelly.com
+Production | https://api.jellytelly.com
 
 # Authentication
 
@@ -67,4 +79,8 @@ Jellytelly expects for the auth_token to be included in all API requests to the 
 
 <aside class="notice">
 You must replace <code>auth_token</code> with the user auth_token.
+</aside>
+
+<aside class="warning">
+auth_tokens are environment specific, so you can not reuse them between environments
 </aside>
