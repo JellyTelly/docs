@@ -301,9 +301,7 @@ curl -X DELETE -H "Authorization: Token token="auth_token"" -H "Cache-Control: n
 
 This end removes the user subscription, and sets the user role to "user", then returns a 204
 
-<aside class="notice">This is a blue note</aside>
-<aside class="warning">This is a red note</aside>
-<aside class="success">This is a green note</aside>
+<aside class="notice">NOTE: this method requires the auth_token</aside>
 
 ### HTTP Request
 

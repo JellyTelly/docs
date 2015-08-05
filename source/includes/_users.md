@@ -54,13 +54,13 @@ This endpoint creates a user account, with a role of user. This user will not be
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-user | The user hash object, all parameters must be passed in the user hash
-user[email] | Email of the user
-user[password] | User password, minimum length: 6 chars
-user[password_confirmation] | User password_confirmation, must match password
-user[username] | Username for all new users is their email
+Parameter | Datatype | Description | Required?
+--------- | ----------- | ----------- | -----------
+user | Hash | The user hash object, all parameters must be passed in the user hash | true
+user[email] | String | Email of the user | true
+user[password] | String | User password, minimum length: 6 chars | true
+user[password_confirmation] | String | User password_confirmation, must match password | true
+user[username] | String | Username for all new users is their email | true
 
 ## Login
 
@@ -114,10 +114,10 @@ This endpoint validates and logs a user into the system; returning user specific
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-EMAIL | The email of the user
-PASSWORD | The password of the user
+Parameter | Datatype | Description | Required?
+--------- | ----------- | ----------- | -----------
+EMAIL | String | The email of the user | true
+PASSWORD | String | The password of the user | true
 
 ## Logout
 
@@ -372,9 +372,9 @@ Authorization: Token token="auth_token"`
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the user to retrieve, which can be either integer id or string email
+Parameter | Datatype | Description | Required?
+--------- | ----------- | ----------- | -----------
+ID | String | The ID of the user to retrieve, which can be either integer id or string email | true
 
 ## Edit
 
@@ -410,15 +410,15 @@ Authorization: Token token="auth_token"`
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-ID | Required: The ID of the user to edit
-user | The user hash object, all subsequent parameters must be passed in the user hash
-user[email] | Optional: Email of the user
-user[password] | Optional: User password, minimum length: 6 chars
-user[first_name] | Optional: User first name
-user[last_name] | Optional: User last name
-user[username] | Optional: Username for login
+Parameter | Datatype | Description | Required?
+--------- | ----------- | ----------- | -----------
+ID | String | The ID of the user to edit | true
+user | Hash | The user hash object, all subsequent parameters must be passed in the user hash
+user[email] | String | Email of the user | false
+user[password] | String | User password, minimum length: 6 chars | false
+user[first_name] | String | User first name | false
+user[last_name] | String | User last name | false
+user[username] | String | Username for login | false
 
 ## Delete
 
@@ -443,31 +443,385 @@ Authorization: Token token="auth_token"`
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the user to delete
+Parameter | Datatype | Description | Required?
+--------- | ----------- | ----------- | -----------
+ID | String | The ID of the user to delete | true
 
 
-## List Favorites
+## List favorites
+```ruby
 
-## Add Video to Favorites
+```
 
-## Remove Video from Favorites
+```shell
+curl -X GET -H "Authorization: Token token="auth_token"" -H "Cache-Control: no-cache" 'http://api.jellytelly.com/users/1/favorites'
+```
 
-## Add Series to Favorites
+>The above command returns JSON structured like this:
 
-## Remove Series from Favorites
+```json
+{  
+   "favorites":[  
+      {  
+         "id":184,
+         "created_at":"2015-07-14T16:59:17.498-05:00",
+         "updated_at":"2015-07-14T16:59:17.503-05:00",
+         "embed_code":"E5YzkycjrLejf9I2zIPn0bpeYO3iXSCP",
+         "name":"Madame Blueberry",
+         "description":"Let your kids spend a little time with Madame Blueberry and the rest of the Veggies and they\u0026#039;ll learn that \u0026quot;being greedy makes you grumpy -- but a thankful heart is a happy heart!\u0026quot;",
+         "image_url":"http://cf.c.ooyala.com/E5YzkycjrLejf9I2zIPn0bpeYO3iXSCP/c2iSbFw6b5_lmbUn4xMDoxOmdtO40mAx",
+         "duration":2224641,
+         "asset_type":"video",
+         "asset_status":"live",
+         "asset_created_at":"2014-12-02T15:19:56.000-06:00",
+         "asset_updated_at":"2015-04-16T12:44:48.000-05:00",
+         "original_file_name":"Madame Blueberry for JT.mp4",
+         "series_id":84,
+         "featured":false
+      }
+   ]
+}
+```
+
+Returns list of videos added to favorites by user
+
+<aside class="notice">NOTE: this method requires the auth_token</aside>
+
+### HTTP Request
+
+`GET /users/1/favorites HTTP/1.1
+Host: api.jellytelly.com
+Authorization: Token token="auth_token"`
+
+### URL Parameters
+
+Parameter | Datatype | Description | Required?
+--------- | ----------- | ----------- | -----------
+user_id | String | Id of user | true
+
+## Add Video to favorites
+
+```ruby
+
+```
+
+```shell
+curl -X POST -H "Authorization: Token token="auth_token"" -H "Cache-Control: no-cache" 'http://api.jellytelly.com/users/4/favorites?video_id=66'
+```
+
+Adds video to favorites; no return object, just 200 status
+
+<aside class="notice">NOTE: this method requires the auth_token</aside>
+
+### HTTP Request
+
+`POST /users/4/favorites?video_id=66 HTTP/1.1
+Host: api.jellytelly.com
+Authorization: Token token="auth_token"`
+
+### URL Parameters
+
+Parameter | Datatype | Description | Required?
+--------- | ----------- | ----------- | -----------
+user_id | String | ID of user | true
+id | String | ID for video | true
+
+## Remove Video from favorites
+
+```ruby
+
+```
+
+```shell
+curl -X DELETE -H "Authorization: Token token="auth_token"" -H "Cache-Control: no-cache" 'http://api.jellytelly.com/users/4/favorites/66'
+```
+
+Removes video from favorites; no return object, just 200 status
+
+<aside class="notice">NOTE: this method requires the auth_token</aside>
+
+### HTTP Request
+
+`DELETE /users/4/favorites/66 HTTP/1.1
+Host: api.jellytelly.com
+Authorization: Token token="auth_token"`
+
+### URL Parameters
+
+Parameter | Datatype | Description | Required?
+--------- | ----------- | ----------- | -----------
+user_id | String | ID of user | true
+id | String | ID for video | true
+
+
+## Add Series to favorites
+
+```ruby
+
+```
+
+```shell
+curl -X POST -H "Authorization: Token token="auth_token"" -H "Cache-Control: no-cache" 'http://api.jellytelly.com/users/4/add_favorites_series?series_id=82'
+```
+
+Adds all videos for series favorites; no return object, just 200 status
+
+<aside class="notice">NOTE: this method requires the auth_token</aside>
+
+### HTTP Request
+
+`POST /users/4/add_favorites_series?series_id=82 HTTP/1.1
+Host: api.jellytelly.com
+Authorization: Token token="auth_token"`
+
+### URL Parameters
+
+Parameter | Datatype | Description | Required?
+--------- | ----------- | ----------- | -----------
+user_id | String | ID of user | true
+series_id | String | ID for series | true
+
+## Remove Series from favorites
+
+```ruby
+
+```
+
+```shell
+curl -X DELETE -H "Authorization: Token token="auth_token"" -H "Cache-Control: no-cache" 'http://api.jellytelly.com/users/4/remove_favorites_series?series_id=82'
+```
+
+Removes all videos for series from favorites; no return object, just 200 status
+
+<aside class="notice">NOTE: this method requires the auth_token</aside>
+
+### HTTP Request
+
+`DELETE /users/4/remove_favorites_series?series_id=82 HTTP/1.1
+Host: api.jellytelly.com
+Authorization: Token token="auth_token"`
+
+### URL Parameters
+
+Parameter | Datatype | Description | Required?
+--------- | ----------- | ----------- | -----------
+user_id | String | ID of user | true
+series_id | String | ID for series | true
+
 
 ## List Playlist
+```ruby
+
+```
+
+```shell
+curl -X GET -H "Authorization: Token token="auth_token"" -H "Cache-Control: no-cache" 'http://api.jellytelly.com/users/1/playlists'
+```
+
+>The above command returns JSON structured like this:
+
+```json
+{  
+   "playlist":[  
+      {  
+         "id":184,
+         "created_at":"2015-07-14T16:59:17.498-05:00",
+         "updated_at":"2015-07-14T16:59:17.503-05:00",
+         "embed_code":"E5YzkycjrLejf9I2zIPn0bpeYO3iXSCP",
+         "name":"Madame Blueberry",
+         "description":"Let your kids spend a little time with Madame Blueberry and the rest of the Veggies and they\u0026#039;ll learn that \u0026quot;being greedy makes you grumpy -- but a thankful heart is a happy heart!\u0026quot;",
+         "image_url":"http://cf.c.ooyala.com/E5YzkycjrLejf9I2zIPn0bpeYO3iXSCP/c2iSbFw6b5_lmbUn4xMDoxOmdtO40mAx",
+         "duration":2224641,
+         "asset_type":"video",
+         "asset_status":"live",
+         "asset_created_at":"2014-12-02T15:19:56.000-06:00",
+         "asset_updated_at":"2015-04-16T12:44:48.000-05:00",
+         "original_file_name":"Madame Blueberry for JT.mp4",
+         "series_id":84,
+         "featured":false
+      }
+   ]
+}
+```
+
+Returns list of videos added to playlist by user
+
+<aside class="notice">NOTE: this method requires the auth_token</aside>
+
+### HTTP Request
+
+`GET /users/1/playlists HTTP/1.1
+Host: api.jellytelly.com
+Authorization: Token token="auth_token"`
+
+### URL Parameters
+
+Parameter | Datatype | Description | Required?
+--------- | ----------- | ----------- | -----------
+user_id | String | Id of user | true
 
 ## Add Video to Playlist
 
-## Remove Video from Favorites
+```ruby
+
+```
+
+```shell
+curl -X POST -H "Authorization: Token token="auth_token"" -H "Cache-Control: no-cache" 'http://api.jellytelly.com/users/4/playlists?video_id=66'
+```
+
+Adds video to playlist; no return object, just 200 status
+
+<aside class="notice">NOTE: this method requires the auth_token</aside>
+
+### HTTP Request
+
+`POST /users/4/playlists?video_id=66 HTTP/1.1
+Host: api.jellytelly.com
+Authorization: Token token="auth_token"`
+
+### URL Parameters
+
+Parameter | Datatype | Description | Required?
+--------- | ----------- | ----------- | -----------
+user_id | String | ID of user | true
+id | String | ID for video | true
+
+## Remove Video from Playlist
+
+```ruby
+
+```
+
+```shell
+curl -X DELETE -H "Authorization: Token token="auth_token"" -H "Cache-Control: no-cache" 'http://api.jellytelly.com/users/4/playlists/66'
+```
+
+Removes video from playlist; no return object, just 200 status
+
+<aside class="notice">NOTE: this method requires the auth_token</aside>
+
+### HTTP Request
+
+`DELETE /users/4/playlists/66 HTTP/1.1
+Host: api.jellytelly.com
+Authorization: Token token="auth_token"`
+
+### URL Parameters
+
+Parameter | Datatype | Description | Required?
+--------- | ----------- | ----------- | -----------
+user_id | String | ID of user | true
+id | String | ID for video | true
+
 
 ## Add Series to Playlist
 
+```ruby
+
+```
+
+```shell
+curl -X POST -H "Authorization: Token token="auth_token"" -H "Cache-Control: no-cache" 'http://api.jellytelly.com/users/4/add_playlist_series?series_id=82'
+```
+
+Adds all videos for series playlist; no return object, just 200 status
+
+<aside class="notice">NOTE: this method requires the auth_token</aside>
+
+### HTTP Request
+
+`POST /users/4/add_playlist_series?series_id=82 HTTP/1.1
+Host: api.jellytelly.com
+Authorization: Token token="auth_token"`
+
+### URL Parameters
+
+Parameter | Datatype | Description | Required?
+--------- | ----------- | ----------- | -----------
+user_id | String | ID of user | true
+series_id | String | ID for series | true
+
 ## Remove Series from Playlist
+
+```ruby
+
+```
+
+```shell
+curl -X DELETE -H "Authorization: Token token="auth_token"" -H "Cache-Control: no-cache" 'http://api.jellytelly.com/users/4/remove_playlist_series?series_id=82'
+```
+
+Removes all videos for series from playlist; no return object, just 200 status
+
+<aside class="notice">NOTE: this method requires the auth_token</aside>
+
+### HTTP Request
+
+`DELETE /users/4/remove_playlist_series?series_id=82 HTTP/1.1
+Host: api.jellytelly.com
+Authorization: Token token="auth_token"`
+
+### URL Parameters
+
+Parameter | Datatype | Description | Required?
+--------- | ----------- | ----------- | -----------
+user_id | String | ID of user | true
+series_id | String | ID for series | true
+
 
 ## Add / Update Video Rating
 
+```ruby
+
+```
+
+```shell
+curl -X POST -H "Authorization: Token token="auth_token"" -H "Cache-Control: no-cache" 'http://api.jellytelly.com/users/4/ratings?video_id=66&rating=3.5'
+```
+
+Adds rating to video; no return object, just 200 status
+
+<aside class="notice">NOTE: this method requires the auth_token</aside>
+
+### HTTP Request
+
+`POST /users/4/ratings?video_id=66&rating=3.5 HTTP/1.1
+Host: api.jellytelly.com
+Authorization: Token token="auth_token"`
+
+### URL Parameters
+
+Parameter | Datatype | Description | Required?
+--------- | ----------- | ----------- | -----------
+user_id | String | ID of user | true
+video_id | String | ID for video | true
+rating | String | Value for rating | true
+
+
 ## Set Active Episode
+
+```ruby
+
+```
+
+```shell
+curl -X POST -H "Authorization: Token token="auth_token"" -H "Cache-Control: no-cache" 'http://api.jellytelly.com/users/1/set_active_episode?embed_code=dxeG41dTrpdi41J069c1syLsLsUQyk2U'
+```
+
+Sets active episode on user record; no return object, just 200 status
+
+<aside class="notice">NOTE: this method requires the auth_token</aside>
+
+### HTTP Request
+
+`POST /users/1/set_active_episode?embed_code=dxeG41dTrpdi41J069c1syLsLsUQyk2U HTTP/1.1
+Host: api.jellytelly.com
+Authorization: Token token="auth_token"`
+
+### URL Parameters
+
+Parameter | Datatype | Description | Required?
+--------- | ----------- | ----------- | -----------
+user_id | String | ID of user | true
+embed_code | String | Embed code of video | true

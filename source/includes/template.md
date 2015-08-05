@@ -28,6 +28,6 @@ Add Description here
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-Param | Desc
+Parameter | Datatype | Description | Required?
+--------- | ----------- | ----------- | -----------
+Param | datatype | Desc | true
