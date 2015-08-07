@@ -11,6 +11,7 @@ toc_footers:
 
 includes:
   - users
+  - password_resets
   - subscriptions
   - series
   - videos
