@@ -17,6 +17,7 @@ includes:
   - videos
   - games
   - search
+  - home_page
   - errors
 
 search: true
