@@ -315,3 +315,60 @@ Parameter | Description
 --------- | -----------
 user_id | ID of user creating subscription
 id | ID of subscription
+
+
+## List Available Plans
+
+```ruby
+
+```
+
+```shell
+curl -X GET -H "Cache-Control: no-cache" 'https://api.jellytelly.com/subscription/plans'
+```
+
+>The above command returns JSON structured like this:
+
+```json
+{
+  "plans": [
+    {
+      "id": "JTA",
+      "interval": "year",
+      "name": "JellyTelly Annual Subscription",
+      "created": 1435255142,
+      "amount": 4000,
+      "currency": "usd",
+      "object": "plan",
+      "livemode": false,
+      "interval_count": 1,
+      "trial_period_days": 7,
+      "metadata": {},
+      "statement_descriptor": "jellytellysubscription"
+    },
+    {
+      "id": "JTM",
+      "interval": "month",
+      "name": "JellyTelly Monthly Subscription",
+      "created": 1435255086,
+      "amount": 500,
+      "currency": "usd",
+      "object": "plan",
+      "livemode": false,
+      "interval_count": 1,
+      "trial_period_days": 7,
+      "metadata": {},
+      "statement_descriptor": "Jellytellysubscription"
+    }
+  ]
+}
+```
+
+This endpoint returns all available subscription plans
+
+
+### HTTP Request
+
+`GET /subscription/plans HTTP/1.1
+Host: api.jellytelly.com
+Cache-Control: no-cache`
