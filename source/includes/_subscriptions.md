@@ -224,7 +224,7 @@ subscriber_account_id | String | Id to look up subscription details, this will b
 ```
 
 ```shell
-curl -X PATCH -H "Authorization: Token token="auth_token"" -H "Cache-Control: no-cache" 'http://api.jellytelly.com/users/1/subscriptions/sub_6e0X9Kq1yWCBXw?payment_token=tok_16SMewJDs1f4mwxy1vziPDOY&coupon_code=10OFF'
+curl -X PUT -H "Authorization: Token token="auth_token"" -H "Cache-Control: no-cache" 'http://api.jellytelly.com/users/1/subscriptions/sub_6e0X9Kq1yWCBXw?payment_token=tok_16SMewJDs1f4mwxy1vziPDOY&coupon_code=10OFF'
 ```
 
 >The above command returns JSON structured like this:
@@ -275,7 +275,7 @@ This endpoint updates the subscription to either monthly or annual, and applies 
 
 ### HTTP Request
 
-`PATCH /users/1/subscriptions/sub_6e0X9Kq1yWCBXw?payment_token=tok_16SMewJDs1f4mwxy1vziPDOY&coupon_code=10OFF HTTP/1.1
+`PUT /users/1/subscriptions/sub_6e0X9Kq1yWCBXw?payment_token=tok_16SMewJDs1f4mwxy1vziPDOY&coupon_code=10OFF HTTP/1.1
 Host: api.jellytelly.com
 Authorization: Token token="auth_token"`
 

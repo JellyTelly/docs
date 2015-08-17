@@ -39,7 +39,7 @@ email | String | The email address to send reset token to | true
 ```
 
 ```shell
-curl -X PATCH -H "Cache-Control: no-cache" 'https://api.jellytelly.com/password_resets/abc?password=testuser&password_confirmation=testuser'
+curl -X PUT -H "Cache-Control: no-cache" 'https://api.jellytelly.com/password_resets/abc?password=testuser&password_confirmation=testuser'
 ```
 
 
@@ -48,7 +48,7 @@ This endpoint resets the user password, validated by the reset token. This will 
 
 ### HTTP Request
 
-`PATCH /password_resets/<TOKEN>?password=<PASSWORD>&password_confirmation=<PASSWORD_CONFIRMATION> HTTP/1.1
+`PUT /password_resets/<TOKEN>?password=<PASSWORD>&password_confirmation=<PASSWORD_CONFIRMATION> HTTP/1.1
 Host: api.jellytelly.com
 Cache-Control: no-cache`
 

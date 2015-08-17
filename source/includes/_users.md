@@ -383,7 +383,7 @@ ID | String | The ID of the user to retrieve, which can be either integer id or 
 ```
 
 ```shell
-curl -X PATCH -H "Authorization: Token token="auth_token"" -H "Cache-Control: no-cache" 'http://api.jellytelly.com/users/12?user[email]=tester@email.com&user[password]=newpassword&user[first_name]=Tester&user[last_name]=McTesterson&user[username]'
+curl -X PUT -H "Authorization: Token token="auth_token"" -H "Cache-Control: no-cache" 'http://api.jellytelly.com/users/12?user[email]=tester@email.com&user[password]=newpassword&user[first_name]=Tester&user[last_name]=McTesterson&user[username]'
 ```
 
 >The above command returns JSON structured like this:
@@ -404,7 +404,7 @@ This endpoint allows the user to update their info that is tied to the user acco
 
 ### HTTP Request
 
-`PATCH /users/12?user[email]=tester@email.com&user[password]=newpassword&user[first_name]=Tester&user[last_name]=McTesterson HTTP/1.1
+`PUT /users/12?user[email]=tester@email.com&user[password]=newpassword&user[first_name]=Tester&user[last_name]=McTesterson HTTP/1.1
 Host: api.jellytelly.com
 Authorization: Token token="auth_token"`
 
