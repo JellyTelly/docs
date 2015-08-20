@@ -224,7 +224,7 @@ subscriber_account_id | String | Id to look up subscription details, this will b
 ```
 
 ```shell
-curl -X PUT -H "Authorization: Token token="auth_token"" -H "Cache-Control: no-cache" 'http://api.jellytelly.com/users/1/subscriptions/sub_6e0X9Kq1yWCBXw?payment_token=tok_16SMewJDs1f4mwxy1vziPDOY&coupon_code=10OFF'
+curl -X PUT -H "Authorization: Token token="auth_token"" -H "Cache-Control: no-cache" 'http://api.jellytelly.com/users/1/subscriptions/sub_6e0X9Kq1yWCBXw?payment_token=tok_16SMewJDs1f4mwxy1vziPDOY&coupon_code=10OFF&plan_id=JTA'
 ```
 
 >The above command returns JSON structured like this:
@@ -275,18 +275,19 @@ This endpoint updates the subscription to either monthly or annual, and applies 
 
 ### HTTP Request
 
-`PUT /users/1/subscriptions/sub_6e0X9Kq1yWCBXw?payment_token=tok_16SMewJDs1f4mwxy1vziPDOY&coupon_code=10OFF HTTP/1.1
+`PUT /users/1/subscriptions/sub_6e0X9Kq1yWCBXw?payment_token=tok_16SMewJDs1f4mwxy1vziPDOY&coupon_code=10OFF&plan_id=JTA HTTP/1.1
 Host: api.jellytelly.com
 Authorization: Token token="auth_token"`
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-user_id | ID of user creating subscription
-id | ID of subscription
-payment_token | Optional: Token from merchant service containing payment information, this is not required for iOS users
-coupon_code | Optional: ID of coupon
+Parameter | Datatype | Description | Required?
+--------- | ----------- | ----------- | -----------
+user_id | String | ID of user creating subscription | true
+id | String | ID of subscription | true
+plan_id | String | ID of plan, passed is changing subscription | false
+payment_token | String | Token from merchant service containing payment information, this is not required for iOS users | false
+coupon_code | String | ID of coupon | false
 
 
 ## Delete
@@ -311,10 +312,10 @@ Authorization: Token token="auth_token"`
 
 ### URL Parameters
 
-Parameter | Description
---------- | -----------
-user_id | ID of user creating subscription
-id | ID of subscription
+Parameter | Datatype | Description | Required?
+--------- | ----------- | ----------- | -----------
+user_id | String | ID of user creating subscription | true
+id | String | ID of subscription | true
 
 
 ## List Available Plans
