@@ -13,6 +13,7 @@ includes:
   - users
   - password_resets
   - subscriptions
+  - coupons
   - series
   - videos
   - games

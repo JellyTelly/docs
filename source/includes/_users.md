@@ -825,3 +825,16 @@ Parameter | Datatype | Description | Required?
 --------- | ----------- | ----------- | -----------
 user_id | String | ID of user | true
 embed_code | String | Embed code of video | true
+
+
+## Roles
+
+This is the definition and purpose of the roles
+
+Role | Enum Value | Description | Play Videos? | Account Access?
+--------- | ----------- | ----------- | ----------- | -----------
+user | 0 | This is the default role of a new user without a subscription | false | true
+subscriber | 1 | This is the role of a user with an active subscription | true | true
+vip | 2 | This is the role of a user with a free access to the system, they most likely will not have a subscription | true | true
+admin | 3 | This is the role of administrative users which have full system access, including viewing other user info | true | true
+temp | 4 | These are users imported from previous system, once the payment info is imported from previous system this role will be removed | true | true
