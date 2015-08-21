@@ -383,7 +383,7 @@ ID | String | The ID of the user to retrieve, which can be either integer id or 
 ```
 
 ```shell
-curl -X PUT -H "Authorization: Token token="auth_token"" -H "Cache-Control: no-cache" 'http://api.jellytelly.com/users/12?user[email]=tester@email.com&user[password]=newpassword&user[first_name]=Tester&user[last_name]=McTesterson&user[username]'
+curl -X PUT -H "Authorization: Token token="auth_token"" -H "Cache-Control: no-cache" 'http://api.jellytelly.com/users/12?user[email]=tester@email.com&user[password]=newpassword&user[password_confirmation]=newpassword&user[first_name]=Tester&user[last_name]=McTesterson&user[username]'
 ```
 
 >The above command returns JSON structured like this:
@@ -404,7 +404,7 @@ This endpoint allows the user to update their info that is tied to the user acco
 
 ### HTTP Request
 
-`PUT /users/12?user[email]=tester@email.com&user[password]=newpassword&user[first_name]=Tester&user[last_name]=McTesterson HTTP/1.1
+`PUT /users/12?user[email]=tester@email.com&user[password]=newpassword&user[password_confirmation]=newpassword&user[first_name]=Tester&user[last_name]=McTesterson HTTP/1.1
 Host: api.jellytelly.com
 Authorization: Token token="auth_token"`
 
@@ -416,6 +416,7 @@ ID | String | The ID of the user to edit | true
 user | Hash | The user hash object, all subsequent parameters must be passed in the user hash
 user[email] | String | Email of the user | false
 user[password] | String | User password, minimum length: 6 chars | false
+user[password_confirmation] | String | User password confirmation, only required if passing in password, minimum length: 6 chars | false
 user[first_name] | String | User first name | false
 user[last_name] | String | User last name | false
 user[username] | String | Username for login | false
