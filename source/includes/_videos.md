@@ -125,7 +125,7 @@ curl -X GET -H "Authorization: Token token="auth_token"" -H "Cache-Control: no-c
 }
 ```
 
-This endpoint returns a url to be used as a token in Ooyala player for XDR (Cross Device Resume).
+This endpoint returns a url to be used as a token in Ooyala player for XDR (Cross Device Resume). See the [Ooyala documentation](http://support.ooyala.com/developers/documentation/concepts/player_v3dev_authoverview.html) for instructions for creating the player that includes the token
 
 <aside class="notice">NOTE: this method requires the auth_token</aside>
 
