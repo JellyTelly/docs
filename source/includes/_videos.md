@@ -114,14 +114,14 @@ Authorization: Token token="auth_token"`
 ```
 
 ```shell
-curl -X GET -H "Authorization: Token token="auth_token"" -H "Cache-Control: no-cache" 'http://api.jellytelly.com/videos/playerEmbedToken?video_embed_code=M2N3RwcDqo98egZnFGbTk-FvkJ32VDTc&player_id=OWVmODJmMjQ4NmU3NWI5NDNhNmNhNjFi&user_id=3'
+curl -X GET -H "Authorization: Token token="auth_token"" -H "Cache-Control: no-cache" 'http://api.jellytelly.com/videos/playerEmbedToken?video_embed_code=M2N3RwcDqo98egZnFGbTk-FvkJ32VDTc&pcode=hpZzM615i0ji4siN0eiX3cOy2BeU&user_id=3'
 ```
 
 >The above command returns JSON structured like this:
 
 ```json
-{  
-   "embed_token":"http://player.ooyala.com/sas/embed_token/OWVmODJmMjQ4NmU3NWI5NDNhNmNhNjFi/M2N3RwcDqo98egZnFGbTk-FvkJ32VDTc?account_id=3\u0026api_key=hpZzM615i0ji4siN0eiX3cOy2BeU.qpcP-\u0026expires=1437275726\u0026signature=dT7dlTmcS2PFxhQuUxw7nC8ZLb%2BzCTxt0j6wWjJvIy"
+{
+  "embed_token":"http://player.ooyala.com/sas/embed_token/cfeeb8ea4ff0425494bedc3d18370a29/M2N3RwcDqo98egZnFGbTk-FvkJ32VDTc?account_id=3\u0026api_key=hpZzM615i0ji4siN0eiX3cOy2BeU.qpcP-\u0026expires=1441284424\u0026signature=ODf0qkJ1048kXseoiJ%2BybSooa1IiqS5Yt8OGraXHDp"
 }
 ```
 
@@ -131,7 +131,7 @@ This endpoint returns a url to be used as a token in Ooyala player for XDR (Cros
 
 ### HTTP Request
 
-`GET /videos/playerEmbedToken?video_embed_code=<video_embed_code>&player_id=<player_id>&user_id=<user_id> HTTP/1.1
+`GET /videos/playerEmbedToken?video_embed_code=<video_embed_code>&pcode=<pcode>&user_id=<user_id> HTTP/1.1
 Host: api.jellytelly.com
 Authorization: Token token="auth_token"`
 
@@ -140,7 +140,7 @@ Authorization: Token token="auth_token"`
 Parameter | Datatype | Description | Required?
 --------- | ----------- | ----------- | -----------
 video_embed_code | String | Embed code for video | true
-player_id | String | Id of player | true
+pcode | String | partner code from Ooyala | true
 user_id | String | Id of user | true
 
 
